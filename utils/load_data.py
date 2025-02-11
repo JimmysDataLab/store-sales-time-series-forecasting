@@ -4,16 +4,13 @@ import os
 import boto3
 
 # %%
-s3_path = "s3a://store-sales-time-series-forecasting/data/raw"
+#s3_path = "s3a://store-sales-time-series-forecasting/data/raw"
+s3_path = "/Users/akhil/Projects/Kaggle/store-sales-time-series-forecasting/data/raw"
 
 # %%
 spark = SparkSession.builder \
         .appName("store-sales-time-series-forecasting") \
         .master("local[*]") \
-        .config("spark.jars.packages", "org.apache.hadoop:hadoop-aws:3.3.4") \
-        .config("spark.hadoop.fs.s3a.impl", "org.apache.hadoop.fs.s3a.S3AFileSystem") \
-        .config("spark.hadoop.fs.s3a.aws.credentials.provider", 
-        "com.amazonaws.auth.DefaultAWSCredentialsProviderChain") \
         .getOrCreate()
 
 
